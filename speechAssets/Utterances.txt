@@ -14,3 +14,6 @@ SelectionIntent i choose coupon {number}
 SelectionIntent select coupon {number}
 SelectionIntent select {number}
 YesIntent yes
+PhoneIntent contact number
+PhoneIntent contact number of coupon
+PhoneIntent give me the phone number of coupon
