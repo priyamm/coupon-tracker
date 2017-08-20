@@ -1,0 +1,16 @@
+
+AMAZON.StopIntent	stop
+AMAZON.CancelIntent	cancel
+AMAZON.HelpIntent	help
+CityIntent i live in {city}
+CityIntent my city is {city}
+CityIntent {city} city
+CityIntent city is {city}
+CouponIntent what is the coupon code
+CouponIntent coupon code
+CouponIntent what is coupon code
+CouponIntent  coupon
+SelectionIntent i choose coupon {number}
+SelectionIntent select coupon {number}
+SelectionIntent select {number}
+YesIntent yes

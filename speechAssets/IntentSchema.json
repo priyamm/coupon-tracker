@@ -1,0 +1,135 @@
+{
+  "intents": [
+    {
+      "name": "AMAZON.CancelIntent",
+      "samples": []
+    },
+    {
+      "name": "AMAZON.HelpIntent",
+      "samples": []
+    },
+    {
+      "name": "AMAZON.StopIntent",
+      "samples": []
+    },
+    {
+      "name": "CityIntent",
+      "samples": [
+        "my city is {city}",
+        "i live in {city}",
+        "city is {city}",
+        "{city} city"
+      ],
+      "slots": [
+        {
+          "name": "city",
+          "type": "AMAZON.US_CITY",
+          "samples": [
+            "{city}",
+            "my city is {city}"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CouponIntent",
+      "samples": [
+        "coupon code",
+        "coupon",
+        "what is the coupon code",
+        "what is coupon code"
+      ],
+      "slots": []
+    },
+    {
+      "name": "PhoneIntent",
+      "samples": [
+        "give me the phone number of coupon",
+        "contact number of coupon",
+        "contact number"
+      ],
+      "slots": []
+    },
+    {
+      "name": "SelectionIntent",
+      "samples": [
+        "select {number}",
+        "select coupon {number}",
+        "i choose coupon {number}"
+      ],
+      "slots": [
+        {
+          "name": "number",
+          "type": "AMAZON.NUMBER",
+          "samples": []
+        }
+      ]
+    },
+    {
+      "name": "YesIntent",
+      "samples": [
+        "yes"
+      ],
+      "slots": []
+    }
+  ],
+  "prompts": [
+    {
+      "id": "Confirm.Intent-CityIntent",
+      "promptVersion": "1.0",
+      "definitionVersion": "1.0",
+      "variations": [
+        {
+          "type": "PlainText",
+          "value": "do you stay in {city}"
+        }
+      ]
+    },
+    {
+      "id": "Elicit.Intent-CityIntent.IntentSlot-city",
+      "promptVersion": "1.0",
+      "definitionVersion": "1.0",
+      "variations": [
+        {
+          "type": "PlainText",
+          "value": "Please tell your city"
+        }
+      ]
+    },
+    {
+      "id": "Confirm.Intent-CityIntent.IntentSlot-city",
+      "promptVersion": "1.0",
+      "definitionVersion": "1.0",
+      "variations": [
+        {
+          "type": "PlainText",
+          "value": "Do you live in {city}"
+        }
+      ]
+    }
+  ],
+  "dialog": {
+    "version": "1.0",
+    "intents": [
+      {
+        "name": "CityIntent",
+        "confirmationRequired": true,
+        "prompts": {
+          "confirm": "Confirm.Intent-CityIntent"
+        },
+        "slots": [
+          {
+            "name": "city",
+            "type": "AMAZON.US_CITY",
+            "elicitationRequired": true,
+            "confirmationRequired": true,
+            "prompts": {
+              "elicit": "Elicit.Intent-CityIntent.IntentSlot-city",
+              "confirm": "Confirm.Intent-CityIntent.IntentSlot-city"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
