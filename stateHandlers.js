@@ -30,19 +30,27 @@ var stateHandlers = {
           console.log('Yes Intent : ' + cityName);
           if(!cityName)
             this.emit(':ask', 'Please tell your city name', 'You didn\'t answered.');
-          var message = 'Here are the coupons for city ' + cityName + '...' +
-                        ' You can interrupt me asking what is the coupon code, address, phone number of the coupons after selecting the coupon. ... ...';
+          var message = 'Here are the coupons for city ' + cityName + '...';
+                        // ' You can interrupt me asking what is the coupon code, address, phone number of the coupons after selecting the coupon. ... ...';
           apiClient.currentCouponAPI(data => {
             var filteredData = data.filter(leaf => {
               return leaf.city===cityName;
             });
             couponList = filteredData;
-            var count = filteredData.length;
-            message += filteredData.reduce((msg, one)=>{
-              return msg + 'Coupon Number ' + (filteredData.indexOf(one) + 1) + '...' + one.coupon_title + '...';
-            }, '');
-            this.emit(':ask', message, 'You didn\'t answered.');
+            if(!couponList || couponList.length === 0)
+              this.emit(':ask', 'Thers is no coupon for your city. Try another city', 'You didn\'t answered.');
+            else {
+              var count = filteredData.length;
+              message += filteredData.reduce((msg, one)=>{
+                return msg + 'Coupon Number ' + (filteredData.indexOf(one) + 1) + '...' + one.coupon_title + '...';
+              }, '');
+              message += ' . Select one of the above coupons.'
+              this.emit(':ask', message, 'You didn\'t answered.');
+            }
           });
+        },
+        'NoIntent' : function() {
+          this.emit(':ask', 'Which city are you from', 'You didn\'t answered.');
         },
         'SelectionIntent': function() {
           var number = this.event.request.intent.slots.number.value;
@@ -77,11 +85,11 @@ var stateHandlers = {
 
         'AMAZON.HelpIntent': function() {
           var message = Messages.HELP;
-          this.emit(':ask', message, message);
+          this.emit(':tell', message);
       },
 
       'AMAZON.StopIntent': function() {
-          var message = 'Find out more at www.xyz.com. Goodbye.';
+          var message = 'Find out more at one indya.com/cuponsninja. Goodbye.';
           this.emit(':tell', message);
       },
 

@@ -1,7 +1,7 @@
 'use strict';
 
-const WELCOME = 'Welcome to the OneIndia Coupons...  Its my pleasure to check the coupons near you . Which city you are in currently?';
-const HELP = 'Answer in the following way, I live in New Delhi ... or ... my city is New Delhi ... or ... New Delhi city.';
+const WELCOME = 'Welcome to the OneIndia Coupons...  Its my pleasure to check the coupons near you . Which city coupons would you like to check?';
+const HELP = 'You can provide your city in the following manner like ... I live in New York or My city is New York.';
 
 module.exports = {
   'WELCOME' : WELCOME,

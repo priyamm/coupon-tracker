@@ -71,6 +71,14 @@
         "yes"
       ],
       "slots": []
+    },
+    {
+      "name": "NoIntent",
+      "samples": [
+        "no",
+        "nope"
+      ],
+      "slots": []
     }
   ],
   "prompts": [

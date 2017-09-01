@@ -17,3 +17,5 @@ YesIntent yes
 PhoneIntent contact number
 PhoneIntent contact number of coupon
 PhoneIntent give me the phone number of coupon
+NoIntent no
+NoIntent nope
