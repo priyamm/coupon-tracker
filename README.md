@@ -1,5 +1,5 @@
 # coupon-tracker
-An alexa skill for 1indya.com coupons
+An alexa skill for coupons
 
 #Deploiyng the code on AWS Lamda
 1. Start by signing up for an accout on Amazon AWS Services.
